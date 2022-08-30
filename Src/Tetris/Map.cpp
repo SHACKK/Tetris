@@ -21,6 +21,7 @@ bool CMap::IsCollide(CTetrimino* pTetrimino)
 void CMap::Pile(CTetrimino* pTetrimino)
 {
 	// TODO
+	
 }
 
 void CMap::OnDraw(CConsoleOutput* pRender)

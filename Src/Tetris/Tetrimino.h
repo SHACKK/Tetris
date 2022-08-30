@@ -35,7 +35,8 @@ public:
 	void RestoreState(void);
 	void PopState(void);
 
-	void Move(int nOffset);
+	void MoveSide(int nOffset);
+	void MoveDown(int nOffset);
 	void Rotate(int nDir = 1);
 
 	void OnDraw(CConsoleOutput* pRenderer);

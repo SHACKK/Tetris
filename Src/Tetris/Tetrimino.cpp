@@ -192,9 +192,18 @@ void CTetrimino::PopState(void)
 	m_stackState.pop();
 }
 
-void CTetrimino::Move(int nOffset)
+void CTetrimino::MoveSide(int nOffset)
 {
 	m_nPosX += nOffset;
+	if (10 < m_nPosX)
+		m_nPosX = 10;
+	else if (m_nPosX < 2)
+		m_nPosX = 2;
+}
+
+void CTetrimino::MoveDown(int nOffset)
+{
+	m_nPosY += nOffset;
 }
 
 void CTetrimino::Rotate(int nDir)

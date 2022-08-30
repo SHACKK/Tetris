@@ -22,7 +22,7 @@ CTetris::CTetris(void)
     m_Input.Register(GAMEKEY_RIGHT,     VK_RIGHT);
     m_Input.Register(GAMEKEY_ROTATE,        VK_UP);
     m_Input.Register(GAMEKEY_DOWN,      VK_DOWN);
-    m_Input.Register(GAMEKEY_ROTATE,    VK_SPACE);
+    m_Input.Register(GAMEKEY_SMASH,    VK_SPACE);
     m_Output.Create(TEXT("BoB TETRIS"), COORD{ 100, 30 }, COORD{ g_nMapWidth, g_nMapHeight });
 }
 
@@ -47,19 +47,21 @@ void CTetris::Update(const std::list<ST_KEYSTATE> stKeyState, int nElapsedTick)
         switch (key.nID)
         {
         case GAMEKEY_LEFT:
-            m_Tetrimino.Move(-1);
+            m_Tetrimino.MoveSide(-1);
             break;
         case GAMEKEY_RIGHT:
-            m_Tetrimino.Move(1);
+            m_Tetrimino.MoveSide(1);
             break;
         case GAMEKEY_ROTATE:
             m_Tetrimino.Rotate();
             break;
         case GAMEKEY_DOWN:
-            m_Tetrimino.Move(-1);
+            m_Tetrimino.MoveDown(1);
             break;
         case GAMEKEY_SMASH:
             // [TODO]
+            m_Map.Pile(&m_Tetrimino);
+            m_Tetrimino.Reset(rand() % TETRIMINO_COUNT);
             break;
         }
     }
