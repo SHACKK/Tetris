@@ -89,14 +89,20 @@ void CConsoleOutput::Clear(void)
 	FillConsoleOutputCharacter(m_hBackBuffer, ' ', m_nBufferWidth * m_nBufferHeight, Coor, &dw);
 }
 
-void CConsoleOutput::Print(short x, short y, std::string strContext, DWORD dwLen)
+void CConsoleOutput::Print(short x, short y, std::string strContext, DWORD dwLen, char cTransparent)
 {
 	dwLen = std::min<DWORD>(dwLen, strContext.length());
 
-	DWORD dw;
-	COORD CursorPosition = { x, y };
-	SetConsoleCursorPosition(m_hBackBuffer, CursorPosition);
-	WriteFile(m_hBackBuffer, strContext.c_str(), dwLen, &dw, NULL);
+	for (int i = 0; i < dwLen; i++)
+	{
+		if (strContext.at(i) == cTransparent)
+			continue;
+		
+		DWORD dw;
+		COORD CursorPosition = { x + i, y };
+		SetConsoleCursorPosition(m_hBackBuffer, CursorPosition);
+		WriteFile(m_hBackBuffer, strContext.c_str() + i, 1, &dw, NULL);
+	}
 }
 
 void CConsoleOutput::Flip(SMALL_RECT WorldRect, COORD ScreenPos)

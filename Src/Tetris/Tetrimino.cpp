@@ -28,6 +28,8 @@ void CTetrimino::Reset(int nType)
 		memcpy(m_szBlock[3][1], "    ", 5);
 		memcpy(m_szBlock[3][2], "    ", 5);
 		memcpy(m_szBlock[3][3], "    ", 5);
+
+		m_eType = TETRIMINO_I;
 		break;
 
 	case TETRIMINO_O:
@@ -50,6 +52,8 @@ void CTetrimino::Reset(int nType)
 		memcpy(m_szBlock[3][1], "OO  ", 5);
 		memcpy(m_szBlock[3][2], "    ", 5);
 		memcpy(m_szBlock[3][3], "    ", 5);
+
+		m_eType = TETRIMINO_O;
 		break;
 
 	case TETRIMINO_J:
@@ -72,6 +76,8 @@ void CTetrimino::Reset(int nType)
 		memcpy(m_szBlock[3][1], " J  ", 5);
 		memcpy(m_szBlock[3][2], "JJ  ", 5);
 		memcpy(m_szBlock[3][3], "    ", 5);
+
+		m_eType = TETRIMINO_J;
 		break;
 
 	case TETRIMINO_L:
@@ -94,6 +100,8 @@ void CTetrimino::Reset(int nType)
 		memcpy(m_szBlock[3][1], "L   ", 5);
 		memcpy(m_szBlock[3][2], "L   ", 5);
 		memcpy(m_szBlock[3][3], "    ", 5);
+
+		m_eType = TETRIMINO_L;
 		break;
 
 	case TETRIMINO_S:
@@ -116,6 +124,8 @@ void CTetrimino::Reset(int nType)
 		memcpy(m_szBlock[3][1], "SS  ", 5);
 		memcpy(m_szBlock[3][2], " S  ", 5);
 		memcpy(m_szBlock[3][3], "    ", 5);
+
+		m_eType = TETRIMINO_S;
 		break;
 
 	case TETRIMINO_Z:
@@ -138,6 +148,8 @@ void CTetrimino::Reset(int nType)
 		memcpy(m_szBlock[3][1], "ZZ  ", 5);
 		memcpy(m_szBlock[3][2], "Z   ", 5);
 		memcpy(m_szBlock[3][3], "    ", 5);
+
+		m_eType = TETRIMINO_Z;
 		break;
 
 	case TETRIMINO_T:
@@ -160,6 +172,8 @@ void CTetrimino::Reset(int nType)
 		memcpy(m_szBlock[3][1], "TT  ", 5);
 		memcpy(m_szBlock[3][2], "T   ", 5);
 		memcpy(m_szBlock[3][3], "    ", 5);
+
+		m_eType = TETRIMINO_T;
 		break;
 	}
 }
@@ -195,10 +209,6 @@ void CTetrimino::PopState(void)
 void CTetrimino::MoveSide(int nOffset)
 {
 	m_nPosX += nOffset;
-	if (10 < m_nPosX)
-		m_nPosX = 10;
-	else if (m_nPosX < 2)
-		m_nPosX = 2;
 }
 
 void CTetrimino::MoveDown(int nOffset)
@@ -211,10 +221,30 @@ void CTetrimino::Rotate(int nDir)
 	m_nRotation = (m_nRotation + nDir) % 4;
 }
 
+int CTetrimino::GetPosX()
+{
+	return m_nPosX;
+}
+
+int CTetrimino::GetPosY()
+{
+	return m_nPosY;
+}
+
+char CTetrimino::GetBlock(int nY, int nX)
+{
+	return m_szBlock[m_nRotation][nY][nX];
+}
+
+E_TETRIMINO_TYPE CTetrimino::GetType()
+{
+	return m_eType;
+}
+
 void CTetrimino::OnDraw(CConsoleOutput* pRenderer)
 {
-	pRenderer->Print(m_nPosX, m_nPosY + 0, m_szBlock[m_nRotation][0], 4);
-	pRenderer->Print(m_nPosX, m_nPosY + 1, m_szBlock[m_nRotation][1], 4);
-	pRenderer->Print(m_nPosX, m_nPosY + 2, m_szBlock[m_nRotation][2], 4);
-	pRenderer->Print(m_nPosX, m_nPosY + 3, m_szBlock[m_nRotation][3], 4);
+	pRenderer->Print(m_nPosX, m_nPosY + 0, m_szBlock[m_nRotation][0], 4, ' ');
+	pRenderer->Print(m_nPosX, m_nPosY + 1, m_szBlock[m_nRotation][1], 4, ' ');
+	pRenderer->Print(m_nPosX, m_nPosY + 2, m_szBlock[m_nRotation][2], 4, ' ');
+	pRenderer->Print(m_nPosX, m_nPosY + 3, m_szBlock[m_nRotation][3], 4, ' ');
 }

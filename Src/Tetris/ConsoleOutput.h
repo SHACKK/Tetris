@@ -17,7 +17,7 @@ public:
 	void Destroy(void);
 
 	void Clear(void);
-	void Print(short x, short y, std::string strContext, DWORD dwLen);
+	void Print(short x, short y, std::string strContext, DWORD dwLen, char cTransparent = ' ');
 	void Flip(SMALL_RECT WorldRect, COORD ScreenPos);
 };
 

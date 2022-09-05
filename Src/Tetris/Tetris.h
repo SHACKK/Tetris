@@ -19,5 +19,5 @@ public:
 	void Input(std::list<ST_KEYSTATE>& outState);
 	void Update(const std::list<ST_KEYSTATE> stKeyState, int nElapsedTick);
 	void Render(void);
+	void Falling();
 };
-

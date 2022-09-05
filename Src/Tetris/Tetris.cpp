@@ -56,12 +56,26 @@ void CTetris::Update(const std::list<ST_KEYSTATE> stKeyState, int nElapsedTick)
             m_Tetrimino.Rotate();
             break;
         case GAMEKEY_DOWN:
-            m_Tetrimino.MoveDown(1);
+            this->Falling();
             break;
         case GAMEKEY_SMASH:
-            // [TODO]
+            do
+            {
+                m_Tetrimino.PopState();
+                m_Tetrimino.PushState();
+                m_Tetrimino.MoveDown(1);
+            } while (!m_Map.IsCollide(&m_Tetrimino));
+
+            m_Tetrimino.RestoreState();
+
             m_Map.Pile(&m_Tetrimino);
             m_Tetrimino.Reset(rand() % TETRIMINO_COUNT);
+            if (m_Map.IsCollide(&m_Tetrimino))
+            {
+                // GameOver
+                Sleep(3000);
+                m_Map.Clear();
+            }
             break;
         }
     }
@@ -78,4 +92,26 @@ void CTetris::Render(void)
     m_Map.OnDraw(&m_Output);
     m_Tetrimino.OnDraw(&m_Output);
     m_Output.Flip(SMALL_RECT{ 0, 0, g_nMapWidth - 1, g_nMapHeight - 1 }, COORD{ 40, 5 });
+}
+
+void CTetris::Falling()
+{
+    m_Tetrimino.PushState();
+    m_Tetrimino.MoveDown(1);
+    if (m_Map.IsCollide(&m_Tetrimino))
+    {
+        m_Tetrimino.RestoreState();
+        m_Map.Pile(&m_Tetrimino);
+        m_Tetrimino.Reset(rand() % TETRIMINO_COUNT);
+        if (m_Map.IsCollide(&m_Tetrimino))
+        {
+			//GameOver
+            Sleep(3000);
+            m_Map.Clear();
+        }
+        return;
+    }
+    else
+        m_Tetrimino.PopState();
+	
 }

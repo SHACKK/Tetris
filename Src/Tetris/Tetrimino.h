@@ -27,6 +27,7 @@ class CTetrimino : public CRenderObject
 	char m_szBlock[4][4][4 + 1];
 	int m_nRotation;
 	std::stack<ST_TETRIMINO_STATE> m_stackState;
+	E_TETRIMINO_TYPE m_eType;
 
 public:
 	void Reset(int nType);
@@ -38,6 +39,11 @@ public:
 	void MoveSide(int nOffset);
 	void MoveDown(int nOffset);
 	void Rotate(int nDir = 1);
+
+	int GetPosX();
+	int GetPosY();
+	char GetBlock(int nY, int nX);
+	E_TETRIMINO_TYPE GetType();
 
 	void OnDraw(CConsoleOutput* pRenderer);
 };
