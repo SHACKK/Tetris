@@ -11,7 +11,7 @@ const int g_nMapHeight = g_nBlockHeight + g_nMapMargin;
 
 class CMap : public CRenderObject
 {
-	char m_szMapData[g_nMapHeight][g_nMapWidth + 1];
+	wchar_t m_szMapData[g_nMapHeight * 2][(g_nMapWidth + 1) * 2];
 
 public:
 	void Clear(void);

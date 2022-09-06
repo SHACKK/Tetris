@@ -9,169 +9,169 @@ void CTetrimino::Reset(int nType)
 	switch (nType)
 	{
 	case TETRIMINO_I:
-		memcpy(m_szBlock[0][0], "I   ", 5);
-		memcpy(m_szBlock[0][1], "I   ", 5);
-		memcpy(m_szBlock[0][2], "I   ", 5);
-		memcpy(m_szBlock[0][3], "I   ", 5);
+		wmemcpy(m_szBlock[0][0], L"бс   ", 5);
+		wmemcpy(m_szBlock[0][1], L"бс   ", 5);
+		wmemcpy(m_szBlock[0][2], L"бс   ", 5);
+		wmemcpy(m_szBlock[0][3], L"бс   ", 5);
 		
-		memcpy(m_szBlock[1][0], "IIII", 5);
-		memcpy(m_szBlock[1][1], "    ", 5);
-		memcpy(m_szBlock[1][2], "    ", 5);
-		memcpy(m_szBlock[1][3], "    ", 5);
+		wmemcpy(m_szBlock[1][0], L"бсбсбсбс", 5);
+		wmemcpy(m_szBlock[1][1], L"    ", 5);
+		wmemcpy(m_szBlock[1][2], L"    ", 5);
+		memcpy(m_szBlock[1][3], L"    ", 5);
 
-		memcpy(m_szBlock[2][0], "I   ", 5);
-		memcpy(m_szBlock[2][1], "I   ", 5);
-		memcpy(m_szBlock[2][2], "I   ", 5);
-		memcpy(m_szBlock[2][3], "I   ", 5);
+		wmemcpy(m_szBlock[2][0], L"бс   ", 5);
+		wmemcpy(m_szBlock[2][1], L"бс   ", 5);
+		wmemcpy(m_szBlock[2][2], L"бс   ", 5);
+		wmemcpy(m_szBlock[2][3], L"бс   ", 5);
 
-		memcpy(m_szBlock[3][0], "IIII", 5);
-		memcpy(m_szBlock[3][1], "    ", 5);
-		memcpy(m_szBlock[3][2], "    ", 5);
-		memcpy(m_szBlock[3][3], "    ", 5);
+		wmemcpy(m_szBlock[3][0], L"бсбсбсбс", 5);
+		wmemcpy(m_szBlock[3][1], L"    ", 5);
+		wmemcpy(m_szBlock[3][2], L"    ", 5);
+		wmemcpy(m_szBlock[3][3], L"    ", 5);
 
 		m_eType = TETRIMINO_I;
 		break;
 
 	case TETRIMINO_O:
-		memcpy(m_szBlock[0][0], "OO  ", 5);
-		memcpy(m_szBlock[0][1], "OO  ", 5);
-		memcpy(m_szBlock[0][2], "    ", 5);
-		memcpy(m_szBlock[0][3], "    ", 5);
-
-		memcpy(m_szBlock[1][0], "OO  ", 5);
-		memcpy(m_szBlock[1][1], "OO  ", 5);
-		memcpy(m_szBlock[1][2], "    ", 5);
-		memcpy(m_szBlock[1][3], "    ", 5);
-
-		memcpy(m_szBlock[2][0], "OO  ", 5);
-		memcpy(m_szBlock[2][1], "OO  ", 5);
-		memcpy(m_szBlock[2][2], "    ", 5);
-		memcpy(m_szBlock[2][3], "    ", 5);
-
-		memcpy(m_szBlock[3][0], "OO  ", 5);
-		memcpy(m_szBlock[3][1], "OO  ", 5);
-		memcpy(m_szBlock[3][2], "    ", 5);
-		memcpy(m_szBlock[3][3], "    ", 5);
+		wmemcpy(m_szBlock[0][0], L"бсбс  ", 5);
+		wmemcpy(m_szBlock[0][1], L"бсбс  ", 5);
+		wmemcpy(m_szBlock[0][2], L"    ", 5);
+		wmemcpy(m_szBlock[0][3], L"    ", 5);
+		
+		wmemcpy(m_szBlock[1][0], L"бсбс  ", 5);
+		wmemcpy(m_szBlock[1][1], L"бсбс  ", 5);
+		wmemcpy(m_szBlock[1][2], L"    ", 5);
+		wmemcpy(m_szBlock[1][3], L"    ", 5);
+		
+		wmemcpy(m_szBlock[2][0], L"бсбс  ", 5);
+		wmemcpy(m_szBlock[2][1], L"бсбс  ", 5);
+		wmemcpy(m_szBlock[2][2], L"    ", 5);
+		wmemcpy(m_szBlock[2][3], L"    ", 5);
+		
+		wmemcpy(m_szBlock[3][0], L"бсбс  ", 5);
+		wmemcpy(m_szBlock[3][1], L"бсбс  ", 5);
+		wmemcpy(m_szBlock[3][2], L"    ", 5);
+		wmemcpy(m_szBlock[3][3], L"    ", 5);
 
 		m_eType = TETRIMINO_O;
 		break;
 
 	case TETRIMINO_J:
-		memcpy(m_szBlock[0][0], "JJJ ", 5);
-		memcpy(m_szBlock[0][1], "  J ", 5);
-		memcpy(m_szBlock[0][2], "    ", 5);
-		memcpy(m_szBlock[0][3], "    ", 5);
-
-		memcpy(m_szBlock[1][0], "JJ  ", 5);
-		memcpy(m_szBlock[1][1], "J   ", 5);
-		memcpy(m_szBlock[1][2], "J   ", 5);
-		memcpy(m_szBlock[1][3], "    ", 5);
-
-		memcpy(m_szBlock[2][0], "J   ", 5);
-		memcpy(m_szBlock[2][1], "JJJ ", 5);
-		memcpy(m_szBlock[2][2], "    ", 5);
-		memcpy(m_szBlock[2][3], "    ", 5);
-
-		memcpy(m_szBlock[3][0], " J  ", 5);
-		memcpy(m_szBlock[3][1], " J  ", 5);
-		memcpy(m_szBlock[3][2], "JJ  ", 5);
-		memcpy(m_szBlock[3][3], "    ", 5);
+		wmemcpy(m_szBlock[0][0], L"бсбсбс ", 5);
+		wmemcpy(m_szBlock[0][1], L"  бс ", 5);
+		wmemcpy(m_szBlock[0][2], L"    ", 5);
+		wmemcpy(m_szBlock[0][3], L"    ", 5);
+		
+		wmemcpy(m_szBlock[1][0], L"бсбс  ", 5);
+		wmemcpy(m_szBlock[1][1], L"бс   ", 5);
+		wmemcpy(m_szBlock[1][2], L"бс   ", 5);
+		wmemcpy(m_szBlock[1][3], L"    ", 5);
+		
+		wmemcpy(m_szBlock[2][0], L"бс   ", 5);
+		wmemcpy(m_szBlock[2][1], L"бсбсбс ", 5);
+		wmemcpy(m_szBlock[2][2], L"    ", 5);
+		wmemcpy(m_szBlock[2][3], L"    ", 5);
+		
+		wmemcpy(m_szBlock[3][0], L" бс  ", 5);
+		wmemcpy(m_szBlock[3][1], L" бс  ", 5);
+		wmemcpy(m_szBlock[3][2], L"бсбс  ", 5);
+		wmemcpy(m_szBlock[3][3], L"    ", 5);
 
 		m_eType = TETRIMINO_J;
 		break;
 
 	case TETRIMINO_L:
-		memcpy(m_szBlock[0][0], "L   ", 5);
-		memcpy(m_szBlock[0][1], "LLL ", 5);
-		memcpy(m_szBlock[0][2], "    ", 5);
-		memcpy(m_szBlock[0][3], "    ", 5);
-
-		memcpy(m_szBlock[1][0], " L  ", 5);
-		memcpy(m_szBlock[1][1], " L  ", 5);
-		memcpy(m_szBlock[1][2], "LL  ", 5);
-		memcpy(m_szBlock[1][3], "    ", 5);
-
-		memcpy(m_szBlock[2][0], "LLL ", 5);
-		memcpy(m_szBlock[2][1], "  L ", 5);
-		memcpy(m_szBlock[2][2], "    ", 5);
-		memcpy(m_szBlock[2][3], "    ", 5);
-
-		memcpy(m_szBlock[3][0], "LL  ", 5);
-		memcpy(m_szBlock[3][1], "L   ", 5);
-		memcpy(m_szBlock[3][2], "L   ", 5);
-		memcpy(m_szBlock[3][3], "    ", 5);
+		wmemcpy(m_szBlock[0][0], L"бс   ", 5);
+		wmemcpy(m_szBlock[0][1], L"бсбсбс ", 5);
+		wmemcpy(m_szBlock[0][2], L"    ", 5);
+		wmemcpy(m_szBlock[0][3], L"    ", 5);
+		
+		wmemcpy(m_szBlock[1][0], L" бс  ", 5);
+		wmemcpy(m_szBlock[1][1], L" бс  ", 5);
+		wmemcpy(m_szBlock[1][2], L"бсбс  ", 5);
+		wmemcpy(m_szBlock[1][3], L"    ", 5);
+		
+		wmemcpy(m_szBlock[2][0], L"бсбсбс ", 5);
+		wmemcpy(m_szBlock[2][1], L"  бс ", 5);
+		wmemcpy(m_szBlock[2][2], L"    ", 5);
+		wmemcpy(m_szBlock[2][3], L"    ", 5);
+		
+		wmemcpy(m_szBlock[3][0], L"бсбс  ", 5);
+		wmemcpy(m_szBlock[3][1], L"бс   ", 5);
+		wmemcpy(m_szBlock[3][2], L"бс   ", 5);
+		wmemcpy(m_szBlock[3][3], L"    ", 5);
 
 		m_eType = TETRIMINO_L;
 		break;
 
 	case TETRIMINO_S:
-		memcpy(m_szBlock[0][0], " SS ", 5);
-		memcpy(m_szBlock[0][1], "SS  ", 5);
-		memcpy(m_szBlock[0][2], "    ", 5);
-		memcpy(m_szBlock[0][3], "    ", 5);
-
-		memcpy(m_szBlock[1][0], "S   ", 5);
-		memcpy(m_szBlock[1][1], "SS  ", 5);
-		memcpy(m_szBlock[1][2], " S  ", 5);
-		memcpy(m_szBlock[1][3], "    ", 5);
-
-		memcpy(m_szBlock[2][0], " SS ", 5);
-		memcpy(m_szBlock[2][1], "SS  ", 5);
-		memcpy(m_szBlock[2][2], "    ", 5);
-		memcpy(m_szBlock[2][3], "    ", 5);
-
-		memcpy(m_szBlock[3][0], "S   ", 5);
-		memcpy(m_szBlock[3][1], "SS  ", 5);
-		memcpy(m_szBlock[3][2], " S  ", 5);
-		memcpy(m_szBlock[3][3], "    ", 5);
+		wmemcpy(m_szBlock[0][0], L" бсбс ", 5);
+		wmemcpy(m_szBlock[0][1], L"бсбс  ", 5);
+		wmemcpy(m_szBlock[0][2], L"    ", 5);
+		wmemcpy(m_szBlock[0][3], L"    ", 5);
+		
+		wmemcpy(m_szBlock[1][0], L"бс   ", 5);
+		wmemcpy(m_szBlock[1][1], L"бсбс  ", 5);
+		wmemcpy(m_szBlock[1][2], L" бс  ", 5);
+		wmemcpy(m_szBlock[1][3], L"    ", 5);
+		
+		wmemcpy(m_szBlock[2][0], L" бсбс ", 5);
+		wmemcpy(m_szBlock[2][1], L"бсбс  ", 5);
+		wmemcpy(m_szBlock[2][2], L"    ", 5);
+		wmemcpy(m_szBlock[2][3], L"    ", 5);
+		
+		wmemcpy(m_szBlock[3][0], L"бс   ", 5);
+		wmemcpy(m_szBlock[3][1], L"бсбс  ", 5);
+		wmemcpy(m_szBlock[3][2], L" бс  ", 5);
+		wmemcpy(m_szBlock[3][3], L"    ", 5);
 
 		m_eType = TETRIMINO_S;
 		break;
 
 	case TETRIMINO_Z:
-		memcpy(m_szBlock[0][0], "ZZ  ", 5);
-		memcpy(m_szBlock[0][1], " ZZ ", 5);
-		memcpy(m_szBlock[0][2], "    ", 5);
-		memcpy(m_szBlock[0][3], "    ", 5);
-
-		memcpy(m_szBlock[1][0], " Z  ", 5);
-		memcpy(m_szBlock[1][1], "ZZ  ", 5);
-		memcpy(m_szBlock[1][2], "Z   ", 5);
-		memcpy(m_szBlock[1][3], "    ", 5);
-
-		memcpy(m_szBlock[2][0], "ZZ  ", 5);
-		memcpy(m_szBlock[2][1], " ZZ ", 5);
-		memcpy(m_szBlock[2][2], "    ", 5);
-		memcpy(m_szBlock[2][3], "    ", 5);
-
-		memcpy(m_szBlock[3][0], " Z  ", 5);
-		memcpy(m_szBlock[3][1], "ZZ  ", 5);
-		memcpy(m_szBlock[3][2], "Z   ", 5);
-		memcpy(m_szBlock[3][3], "    ", 5);
+		wmemcpy(m_szBlock[0][0], L"бсбс  ", 5);
+		wmemcpy(m_szBlock[0][1], L" бсбс ", 5);
+		wmemcpy(m_szBlock[0][2], L"    ", 5);
+		wmemcpy(m_szBlock[0][3], L"    ", 5);
+		
+		wmemcpy(m_szBlock[1][0], L" бс  ", 5);
+		wmemcpy(m_szBlock[1][1], L"бсбс  ", 5);
+		wmemcpy(m_szBlock[1][2], L"бс   ", 5);
+		wmemcpy(m_szBlock[1][3], L"    ", 5);
+		
+		wmemcpy(m_szBlock[2][0], L"бсбс  ", 5);
+		wmemcpy(m_szBlock[2][1], L" бсбс ", 5);
+		wmemcpy(m_szBlock[2][2], L"    ", 5);
+		wmemcpy(m_szBlock[2][3], L"    ", 5);
+		
+		wmemcpy(m_szBlock[3][0], L" бс  ", 5);
+		wmemcpy(m_szBlock[3][1], L"бсбс  ", 5);
+		wmemcpy(m_szBlock[3][2], L"бс   ", 5);
+		wmemcpy(m_szBlock[3][3], L"    ", 5);
 
 		m_eType = TETRIMINO_Z;
 		break;
 
 	case TETRIMINO_T:
-		memcpy(m_szBlock[0][0], " T  ", 5);
-		memcpy(m_szBlock[0][1], "TTT ", 5);
-		memcpy(m_szBlock[0][2], "    ", 5);
-		memcpy(m_szBlock[0][3], "    ", 5);
+		wmemcpy(m_szBlock[0][0], L" бс  ", 5);
+		wmemcpy(m_szBlock[0][1], L"бсбсбс ", 5);
+		wmemcpy(m_szBlock[0][2], L"    ", 5);
+		wmemcpy(m_szBlock[0][3], L"    ", 5);
 
-		memcpy(m_szBlock[1][0], " T  ", 5);
-		memcpy(m_szBlock[1][1], "TT  ", 5);
-		memcpy(m_szBlock[1][2], " T  ", 5);
-		memcpy(m_szBlock[1][3], "    ", 5);
+		wmemcpy(m_szBlock[1][0], L" бс  ", 5);
+		wmemcpy(m_szBlock[1][1], L"бсбс  ", 5);
+		wmemcpy(m_szBlock[1][2], L" бс  ", 5);
+		wmemcpy(m_szBlock[1][3], L"    ", 5);
 
-		memcpy(m_szBlock[2][0], "TTT ", 5);
-		memcpy(m_szBlock[2][1], " T  ", 5);
-		memcpy(m_szBlock[2][2], "    ", 5);
-		memcpy(m_szBlock[2][3], "    ", 5);
+		wmemcpy(m_szBlock[2][0], L"бсбсбс ", 5);
+		wmemcpy(m_szBlock[2][1], L" бс  ", 5);
+		wmemcpy(m_szBlock[2][2], L"    ", 5);
+		wmemcpy(m_szBlock[2][3], L"    ", 5);
 
-		memcpy(m_szBlock[3][0], "T   ", 5);
-		memcpy(m_szBlock[3][1], "TT  ", 5);
-		memcpy(m_szBlock[3][2], "T   ", 5);
-		memcpy(m_szBlock[3][3], "    ", 5);
+		wmemcpy(m_szBlock[3][0], L"бс   ", 5);
+		wmemcpy(m_szBlock[3][1], L"бсбс  ", 5);
+		wmemcpy(m_szBlock[3][2], L"бс   ", 5);
+		wmemcpy(m_szBlock[3][3], L"    ", 5);
 
 		m_eType = TETRIMINO_T;
 		break;
@@ -231,7 +231,7 @@ int CTetrimino::GetPosY()
 	return m_nPosY;
 }
 
-char CTetrimino::GetBlock(int nY, int nX)
+wchar_t CTetrimino::GetBlock(int nY, int nX)
 {
 	return m_szBlock[m_nRotation][nY][nX];
 }

@@ -7,10 +7,10 @@ void CMap::Clear(void)
 	m_nPosY = 0;
 
 	for (int y = 0; y < g_nMapHeight; y++)
-		memset(m_szMapData[y], '*', g_nMapWidth);
+		wmemset(m_szMapData[y], L'бс', g_nMapWidth);
 
 	for (int y = 0; y < g_nBlockHeight; y++)
-		memset(m_szMapData[y] + g_nMapMargin, ' ', g_nBlockWidth);
+		wmemset(m_szMapData[y] + g_nMapMargin, L' ', g_nBlockWidth);
 }
 
 bool CMap::IsCollide(CTetrimino* pTetrimino)
@@ -21,9 +21,9 @@ bool CMap::IsCollide(CTetrimino* pTetrimino)
 		{
 			int nX = pTetrimino->GetPosX();
 			int nY = pTetrimino->GetPosY();
-			char cMap = m_szMapData[nY + y][nX + x];;
-			char cBlock = pTetrimino->GetBlock(y, x);
-			if (cBlock != ' ' && cMap != ' ')
+			wchar_t cMap = m_szMapData[nY + y][nX + x];
+			wchar_t cBlock = pTetrimino->GetBlock(y, x);
+			if (cBlock != L' ' && cMap != L' ')
 				return true;
 		}
 	}
@@ -39,9 +39,9 @@ void CMap::Pile(CTetrimino* pTetrimino)
 		{
 			int nX = pTetrimino->GetPosX();
 			int nY = pTetrimino->GetPosY();
-			char cMap = m_szMapData[nY + y][nX + x];;
-			char cBlock = pTetrimino->GetBlock(y, x);
-			if (cBlock != ' ' && cMap == ' ')
+			wchar_t cMap = m_szMapData[nY + y][nX + x];;
+			wchar_t cBlock = pTetrimino->GetBlock(y, x);
+			if (cBlock != L' ' && cMap == L' ')
 				m_szMapData[nY + y][nX + x] = cBlock;
 		}
 	}
@@ -51,7 +51,7 @@ void CMap::Pile(CTetrimino* pTetrimino)
 		bool bFull = true;
 		for (int x = 0; x < g_nBlockWidth; x++)
 		{
-			if (m_szMapData[y][x + g_nMapMargin] == ' ')
+			if (m_szMapData[y][x + g_nMapMargin] == L' ')
 			{
 				bFull = false;
 				break;
@@ -61,9 +61,9 @@ void CMap::Pile(CTetrimino* pTetrimino)
 		{
 			for (int cy = y; cy > 0; cy--)
 			{
-				memcpy(m_szMapData[cy] + g_nMapMargin, m_szMapData[cy - 1] + g_nMapMargin, g_nBlockWidth);
+				wmemcpy(m_szMapData[cy] + g_nMapMargin, m_szMapData[cy - 1] + g_nMapMargin, g_nBlockWidth);
 			}
-			memset(m_szMapData[0] + g_nMapMargin, ' ', g_nBlockWidth);
+			wmemset(m_szMapData[0] + g_nMapMargin, L' ', g_nBlockWidth);
 			y--;
 		}
 	}

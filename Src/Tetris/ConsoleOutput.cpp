@@ -86,10 +86,10 @@ void CConsoleOutput::Clear(void)
 {
 	COORD Coor = { 0, 0 };
 	DWORD dw;
-	FillConsoleOutputCharacter(m_hBackBuffer, ' ', m_nBufferWidth * m_nBufferHeight, Coor, &dw);
+	FillConsoleOutputCharacter(m_hBackBuffer, L' ', m_nBufferWidth * m_nBufferHeight, Coor, &dw);
 }
 
-void CConsoleOutput::Print(short x, short y, std::string strContext, DWORD dwLen, char cTransparent)
+void CConsoleOutput::Print(short x, short y, std::wstring strContext, DWORD dwLen, wchar_t cTransparent)
 {
 	dwLen = std::min<DWORD>(dwLen, strContext.length());
 
@@ -99,9 +99,10 @@ void CConsoleOutput::Print(short x, short y, std::string strContext, DWORD dwLen
 			continue;
 		
 		DWORD dw;
-		COORD CursorPosition = { x + i, y };
+		COORD CursorPosition = { (x + i) * 2, y };
 		SetConsoleCursorPosition(m_hBackBuffer, CursorPosition);
-		WriteFile(m_hBackBuffer, strContext.c_str() + i, 1, &dw, NULL);
+		//WriteFile(m_hBackBuffer, strContext.c_str() + i, 1, &dw, NULL);
+		WriteConsoleOutputCharacter(m_hBackBuffer, strContext.c_str() + i, 1, CursorPosition, &dw);
 	}
 }
 

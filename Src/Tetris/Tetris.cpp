@@ -23,7 +23,7 @@ CTetris::CTetris(void)
     m_Input.Register(GAMEKEY_ROTATE,        VK_UP);
     m_Input.Register(GAMEKEY_DOWN,      VK_DOWN);
     m_Input.Register(GAMEKEY_SMASH,    VK_SPACE);
-    m_Output.Create(TEXT("BoB TETRIS"), COORD{ 100, 30 }, COORD{ g_nMapWidth, g_nMapHeight });
+    m_Output.Create(TEXT("BoB TETRIS"), COORD{ 120, 30 }, COORD{ g_nMapWidth * 2, (g_nMapHeight + 1) * 2 });
 }
 
 CTetris::~CTetris(void)
@@ -91,7 +91,7 @@ void CTetris::Render(void)
     m_Output.Clear();
     m_Map.OnDraw(&m_Output);
     m_Tetrimino.OnDraw(&m_Output);
-    m_Output.Flip(SMALL_RECT{ 0, 0, g_nMapWidth - 1, g_nMapHeight - 1 }, COORD{ 40, 5 });
+    m_Output.Flip(SMALL_RECT{ 0, 0, (g_nMapWidth - 1) * 2, (g_nMapHeight - 1) * 2 }, COORD{ 40, 5 });
 }
 
 void CTetris::Falling()
