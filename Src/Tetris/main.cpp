@@ -20,9 +20,11 @@ int main()
 	int nFPS = 120;
 	int nSleepTime = 1000 / nFPS;
 
+#ifndef _DEBUG
 	HANDLE hHandle = ::CreateThread(nullptr, 0, FallingCaller, (LPVOID)&tetris, 0, nullptr);
 	if (hHandle != NULL)
 		CloseHandle(hHandle);
+#endif
 
 	while (true)
 	{
