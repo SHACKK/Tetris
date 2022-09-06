@@ -17,7 +17,11 @@ public:
 	void Destroy(void);
 
 	void Clear(void);
-	void Print(short x, short y, std::wstring strContext, DWORD dwLen, wchar_t cTransparent = L' ');
+	void SetColor(int nColor);
+	void Print(short x, short y, std::wstring strContext, DWORD dwLen, wchar_t cTransparent = L' ', int nColor = 0);
 	void Flip(SMALL_RECT WorldRect, COORD ScreenPos);
+	void Vibrate(void);
+	// For Color
+	HANDLE GetBackBuffer(void) { return m_hBackBuffer; }
 };
 

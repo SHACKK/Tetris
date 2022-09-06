@@ -89,7 +89,12 @@ void CConsoleOutput::Clear(void)
 	FillConsoleOutputCharacter(m_hBackBuffer, L' ', m_nBufferWidth * m_nBufferHeight, Coor, &dw);
 }
 
-void CConsoleOutput::Print(short x, short y, std::wstring strContext, DWORD dwLen, wchar_t cTransparent)
+void CConsoleOutput::SetColor(int nColor)
+{
+	SetConsoleTextAttribute(m_hBackBuffer, nColor);
+}
+
+void CConsoleOutput::Print(short x, short y, std::wstring strContext, DWORD dwLen, wchar_t cTransparent, int nColor)
 {
 	dwLen = std::min<DWORD>(dwLen, strContext.length());
 
@@ -102,6 +107,7 @@ void CConsoleOutput::Print(short x, short y, std::wstring strContext, DWORD dwLe
 		COORD CursorPosition = { (x + i) * 2, y };
 		SetConsoleCursorPosition(m_hBackBuffer, CursorPosition);
 		//WriteFile(m_hBackBuffer, strContext.c_str() + i, 1, &dw, NULL);
+		SetConsoleTextAttribute(m_hBackBuffer, FOREGROUND_RED);
 		WriteConsoleOutputCharacter(m_hBackBuffer, strContext.c_str() + i, 1, CursorPosition, &dw);
 	}
 }
@@ -122,4 +128,9 @@ void CConsoleOutput::Flip(SMALL_RECT WorldRect, COORD ScreenPos)
 	rtWrite.Right = ScreenPos.X + size.X;
 	rtWrite.Bottom = ScreenPos.Y + size.Y;
 	WriteConsoleOutput(m_hStdOutput, &m_vecBuffer[0], size, COORD{ 0, 0 }, &rtWrite);
+}
+
+void CConsoleOutput::Vibrate(void)
+{
+	//TODO
 }

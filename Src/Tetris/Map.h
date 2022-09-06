@@ -11,12 +11,14 @@ const int g_nMapHeight = g_nBlockHeight + g_nMapMargin;
 
 class CMap : public CRenderObject
 {
-	wchar_t m_szMapData[g_nMapHeight * 2][(g_nMapWidth + 1) * 2];
+	wchar_t m_szCurMapData[g_nMapHeight][(g_nMapWidth + 2)];
+	wchar_t m_szPreMapData[g_nMapHeight][(g_nMapWidth + 2)];
 
 public:
 	void Clear(void);
 	bool IsCollide(CTetrimino* pTetrimino);
+	void MoveBottom(CTetrimino* pTetrimino);
+	void PrePile(CTetrimino* pTetrimino);
 	void Pile(CTetrimino* pTetrimino);
 	void OnDraw(CConsoleOutput* pOutput);
 };
-

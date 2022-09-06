@@ -11,7 +11,8 @@ class CTetris
 	CTetrimino m_Tetrimino;
 	CKeyInput m_Input;
 	CConsoleOutput m_Output;
-
+	BOOL bSmash;
+	
 public:
 	CTetris(void);
 	~CTetris(void);

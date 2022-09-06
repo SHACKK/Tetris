@@ -8,6 +8,7 @@ enum E_GAMEKEY_TYPE
     GAMEKEY_ROTATE,
     GAMEKEY_DOWN,
     GAMEKEY_SMASH,
+	GAMEKEY_HOLD,
 };
 
 CTetris::CTetris(void)
@@ -23,7 +24,9 @@ CTetris::CTetris(void)
     m_Input.Register(GAMEKEY_ROTATE,        VK_UP);
     m_Input.Register(GAMEKEY_DOWN,      VK_DOWN);
     m_Input.Register(GAMEKEY_SMASH,    VK_SPACE);
-    m_Output.Create(TEXT("BoB TETRIS"), COORD{ 120, 30 }, COORD{ g_nMapWidth * 2, (g_nMapHeight + 1) * 2 });
+    m_Input.Register(GAMEKEY_HOLD,    0x43);
+    m_Output.Create(TEXT("BoB TETRIS"), COORD{ 100, 30 }, COORD{ g_nMapWidth * 2, (g_nMapHeight + 1) * 2 });
+    bSmash = FALSE;
 }
 
 CTetris::~CTetris(void)
@@ -59,15 +62,8 @@ void CTetris::Update(const std::list<ST_KEYSTATE> stKeyState, int nElapsedTick)
             this->Falling();
             break;
         case GAMEKEY_SMASH:
-            do
-            {
-                m_Tetrimino.PopState();
-                m_Tetrimino.PushState();
-                m_Tetrimino.MoveDown(1);
-            } while (!m_Map.IsCollide(&m_Tetrimino));
-
-            m_Tetrimino.RestoreState();
-
+            bSmash = TRUE;
+            m_Map.MoveBottom(&m_Tetrimino);
             m_Map.Pile(&m_Tetrimino);
             m_Tetrimino.Reset(rand() % TETRIMINO_COUNT);
             if (m_Map.IsCollide(&m_Tetrimino))
@@ -84,6 +80,8 @@ void CTetris::Update(const std::list<ST_KEYSTATE> stKeyState, int nElapsedTick)
         m_Tetrimino.RestoreState();
     else
         m_Tetrimino.PopState();
+	
+    m_Map.PrePile(&m_Tetrimino);
 }
 
 void CTetris::Render(void)
@@ -91,7 +89,13 @@ void CTetris::Render(void)
     m_Output.Clear();
     m_Map.OnDraw(&m_Output);
     m_Tetrimino.OnDraw(&m_Output);
-    m_Output.Flip(SMALL_RECT{ 0, 0, (g_nMapWidth - 1) * 2, (g_nMapHeight - 1) * 2 }, COORD{ 40, 5 });
+    // THINK : g_nMapWidth와 g_nMapHeight에서 왜 -1을 하고 있었는가?
+    m_Output.Flip(SMALL_RECT{ 0, 0, g_nMapWidth * 2 , g_nMapHeight * 2 }, COORD{ 33, 5 });
+    if (bSmash)
+    {
+        bSmash = FALSE;
+        m_Output.Vibrate();
+    }
 }
 
 void CTetris::Falling()
