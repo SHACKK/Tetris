@@ -94,7 +94,7 @@ void CConsoleOutput::SetColor(int nColor)
 	SetConsoleTextAttribute(m_hBackBuffer, nColor);
 }
 
-void CConsoleOutput::Print(short x, short y, std::wstring strContext, DWORD dwLen, wchar_t cTransparent, int nColor)
+void CConsoleOutput::Print(short x, short y, std::wstring strContext, DWORD dwLen, WORD wColor, wchar_t cTransparent)
 {
 	dwLen = std::min<DWORD>(dwLen, strContext.length());
 
@@ -106,8 +106,11 @@ void CConsoleOutput::Print(short x, short y, std::wstring strContext, DWORD dwLe
 		DWORD dw;
 		COORD CursorPosition = { (x + i) * 2, y };
 		SetConsoleCursorPosition(m_hBackBuffer, CursorPosition);
+		WriteConsoleOutputAttribute(m_hBackBuffer, &wColor, 1, CursorPosition, &dw);
+		//SetConsoleTextAttribute(m_hBackBuffer, wColor);
+
+		//Â÷ÀÌ ? 
 		//WriteFile(m_hBackBuffer, strContext.c_str() + i, 1, &dw, NULL);
-		SetConsoleTextAttribute(m_hBackBuffer, FOREGROUND_RED);
 		WriteConsoleOutputCharacter(m_hBackBuffer, strContext.c_str() + i, 1, CursorPosition, &dw);
 	}
 }

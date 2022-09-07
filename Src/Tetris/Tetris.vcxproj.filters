@@ -15,6 +15,9 @@
     <ClCompile Include="ConsoleOutput.cpp" />
     <ClCompile Include="RenderObject.cpp" />
     <ClCompile Include="KeyInput.cpp" />
+    <ClCompile Include="ScoreMap.cpp" />
+    <ClCompile Include="HoldMap.cpp" />
+    <ClCompile Include="NextTetriminoMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Tetrimino.h" />
@@ -24,5 +27,9 @@
     <ClInclude Include="ConsoleOutput.h" />
     <ClInclude Include="RenderObject.h" />
     <ClInclude Include="KeyInput.h" />
+    <ClInclude Include="ScoreMap.h" />
+    <ClInclude Include="Define.h" />
+    <ClInclude Include="HoldMap.h" />
+    <ClInclude Include="NextTetriminoMap.h" />
   </ItemGroup>
 </Project>

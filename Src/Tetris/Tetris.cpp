@@ -18,14 +18,15 @@ CTetris::CTetris(void)
     , m_Output()
 {
     m_Map.Clear();
+    m_ScoreBoard.Clear();
     m_Tetrimino.Reset(rand() % TETRIMINO_COUNT);
     m_Input.Register(GAMEKEY_LEFT,      VK_LEFT);
     m_Input.Register(GAMEKEY_RIGHT,     VK_RIGHT);
-    m_Input.Register(GAMEKEY_ROTATE,        VK_UP);
+    m_Input.Register(GAMEKEY_ROTATE,    VK_UP);
     m_Input.Register(GAMEKEY_DOWN,      VK_DOWN);
-    m_Input.Register(GAMEKEY_SMASH,    VK_SPACE);
-    m_Input.Register(GAMEKEY_HOLD,    0x43);
-    m_Output.Create(TEXT("BoB TETRIS"), COORD{ 100, 30 }, COORD{ g_nMapWidth * 2, (g_nMapHeight + 1) * 2 });
+    m_Input.Register(GAMEKEY_SMASH,     VK_SPACE);
+    m_Input.Register(GAMEKEY_HOLD,      0x43);
+    m_Output.Create(TEXT("BoB TETRIS"), COORD{ 80, 30 }, COORD{ 80, 30});
     bSmash = FALSE;
 }
 
@@ -56,7 +57,16 @@ void CTetris::Update(const std::list<ST_KEYSTATE> stKeyState, int nElapsedTick)
             m_Tetrimino.MoveSide(1);
             break;
         case GAMEKEY_ROTATE:
+            m_Tetrimino.PushState();
             m_Tetrimino.Rotate();
+            if (m_Map.IsCollide(&m_Tetrimino))
+            {
+				m_Tetrimino.RestoreState();
+                m_Tetrimino.MoveSide(-1);
+                m_Tetrimino.Rotate();
+                m_Tetrimino.MoveSide(1);
+            }
+			
             break;
         case GAMEKEY_DOWN:
             this->Falling();
@@ -65,6 +75,7 @@ void CTetris::Update(const std::list<ST_KEYSTATE> stKeyState, int nElapsedTick)
             bSmash = TRUE;
             m_Map.MoveBottom(&m_Tetrimino);
             m_Map.Pile(&m_Tetrimino);
+            m_Map.RemoveFullLine(&m_ScoreBoard);
             m_Tetrimino.Reset(rand() % TETRIMINO_COUNT);
             if (m_Map.IsCollide(&m_Tetrimino))
             {
@@ -89,8 +100,9 @@ void CTetris::Render(void)
     m_Output.Clear();
     m_Map.OnDraw(&m_Output);
     m_Tetrimino.OnDraw(&m_Output);
+    m_ScoreBoard.OnDraw(&m_Output);
     // THINK : g_nMapWidth와 g_nMapHeight에서 왜 -1을 하고 있었는가?
-    m_Output.Flip(SMALL_RECT{ 0, 0, g_nMapWidth * 2 , g_nMapHeight * 2 }, COORD{ 33, 5 });
+    m_Output.Flip(SMALL_RECT{ 0, 0, 80, 30}, COORD{ 10, 5 });
     if (bSmash)
     {
         bSmash = FALSE;
@@ -106,6 +118,7 @@ void CTetris::Falling()
     {
         m_Tetrimino.RestoreState();
         m_Map.Pile(&m_Tetrimino);
+		m_Map.RemoveFullLine(&m_ScoreBoard);
         m_Tetrimino.Reset(rand() % TETRIMINO_COUNT);
         if (m_Map.IsCollide(&m_Tetrimino))
         {

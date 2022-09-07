@@ -8,3 +8,5 @@
 #include <stdexcept>
 #include <list>
 #include <vector>
+
+#include "Define.h"

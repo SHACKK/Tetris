@@ -156,9 +156,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleOutput.cpp" />
+    <ClCompile Include="HoldMap.cpp" />
     <ClCompile Include="KeyInput.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="NextTetriminoMap.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -166,17 +168,22 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="RenderObject.cpp" />
+    <ClCompile Include="ScoreMap.cpp" />
     <ClCompile Include="Tetrimino.cpp" />
     <ClCompile Include="Tetris.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleOutput.h" />
+    <ClInclude Include="HoldMap.h" />
     <ClInclude Include="KeyInput.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="NextTetriminoMap.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="RenderObject.h" />
+    <ClInclude Include="ScoreMap.h" />
     <ClInclude Include="Tetrimino.h" />
     <ClInclude Include="Tetris.h" />
+    <ClInclude Include="Define.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

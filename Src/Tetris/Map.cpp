@@ -5,7 +5,8 @@ void CMap::Clear(void)
 {
 	m_nPosX = 0;
 	m_nPosY = 0;
-
+	m_nCombo = 0;
+	
 	for (int y = 0; y < g_nMapHeight; y++)
 		wmemset(m_szCurMapData[y], L'бс', g_nMapWidth);
 
@@ -88,7 +89,11 @@ void CMap::Pile(CTetrimino* pTetrimino)
 				m_szCurMapData[nY + y][nX + x] = szBlock;
 		}
 	}
-	
+}
+
+void CMap::RemoveFullLine(CScoreMap* score)
+{
+	int nLine = 0;
 	
 	for (int y = 0; y < g_nBlockHeight; y++)
 	{
@@ -103,6 +108,7 @@ void CMap::Pile(CTetrimino* pTetrimino)
 		}
 		if (bFull)
 		{
+			nLine++;
 			for (int cy = y; cy > 0; cy--)
 			{
 				wmemcpy(m_szCurMapData[cy] + g_nMapMargin, m_szCurMapData[cy - 1] + g_nMapMargin, g_nBlockWidth);
@@ -114,6 +120,13 @@ void CMap::Pile(CTetrimino* pTetrimino)
 
 	for (int y = 0; y < g_nBlockHeight; y++)
 		wmemset(m_szPreMapData[y] + g_nMapMargin, L' ', g_nBlockWidth);
+
+	if (nLine != 0)
+		m_nCombo++;
+	else
+		m_nCombo = 0;
+	
+	score->AddScore(nLine, m_nCombo);
 }
 
 void CMap::OnDraw(CConsoleOutput* pRender)

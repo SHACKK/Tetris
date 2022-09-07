@@ -243,8 +243,34 @@ E_TETRIMINO_TYPE CTetrimino::GetType()
 
 void CTetrimino::OnDraw(CConsoleOutput* pRenderer)
 {
-	pRenderer->Print(m_nPosX, m_nPosY + 0, m_szBlock[m_nRotation][0], 4, ' ');
-	pRenderer->Print(m_nPosX, m_nPosY + 1, m_szBlock[m_nRotation][1], 4, ' ');
-	pRenderer->Print(m_nPosX, m_nPosY + 2, m_szBlock[m_nRotation][2], 4, ' ');
-	pRenderer->Print(m_nPosX, m_nPosY + 3, m_szBlock[m_nRotation][3], 4, ' ');
+	WORD wColor = 0;
+	switch (m_eType)
+	{
+	case TETRIMINO_I:
+		wColor = FOREGROUND_GREEN | FOREGROUND_INTENSITY;
+		break;
+	case TETRIMINO_O:
+		wColor = FOREGROUND_RED | FOREGROUND_INTENSITY;
+		break;
+	case TETRIMINO_S:
+		wColor = FOREGROUND_BLUE | FOREGROUND_INTENSITY;
+		break;
+	case TETRIMINO_Z:
+		wColor = FOREGROUND_BLUE | FOREGROUND_RED | FOREGROUND_INTENSITY;
+		break;
+	case TETRIMINO_J:
+		wColor = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY;
+		break;
+	case TETRIMINO_L:
+		wColor = FOREGROUND_GREEN | FOREGROUND_BLUE;
+		break;
+	case TETRIMINO_T:
+		wColor = FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY;
+		break;
+	}
+	
+	pRenderer->Print(m_nPosX, m_nPosY + 0, m_szBlock[m_nRotation][0], 4, wColor, ' ');
+	pRenderer->Print(m_nPosX, m_nPosY + 1, m_szBlock[m_nRotation][1], 4, wColor, ' ');
+	pRenderer->Print(m_nPosX, m_nPosY + 2, m_szBlock[m_nRotation][2], 4, wColor, ' ');
+	pRenderer->Print(m_nPosX, m_nPosY + 3, m_szBlock[m_nRotation][3], 4, wColor, ' ');
 }

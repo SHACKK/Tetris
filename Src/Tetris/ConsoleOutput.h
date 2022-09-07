@@ -18,7 +18,7 @@ public:
 
 	void Clear(void);
 	void SetColor(int nColor);
-	void Print(short x, short y, std::wstring strContext, DWORD dwLen, wchar_t cTransparent = L' ', int nColor = 0);
+	void Print(short x, short y, std::wstring strContext, DWORD dwLen, WORD wColor = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY, wchar_t cTransparent = L' ');
 	void Flip(SMALL_RECT WorldRect, COORD ScreenPos);
 	void Vibrate(void);
 	// For Color

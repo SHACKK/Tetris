@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Map.h"
+#include "ScoreMap.h"
 #include "Tetrimino.h"
 #include "KeyInput.h"
 #include "ConsoleOutput.h"
@@ -8,6 +9,7 @@
 class CTetris
 {
 	CMap m_Map;
+	CScoreMap m_ScoreBoard;
 	CTetrimino m_Tetrimino;
 	CKeyInput m_Input;
 	CConsoleOutput m_Output;
