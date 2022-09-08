@@ -6,7 +6,7 @@ DWORD WINAPI FallingCaller(LPVOID pContext)
 	while (true)
 	{
 		CTetris& tetris = *(CTetris*)pContext;
-		Sleep(300);
+		Sleep(500);
 		tetris.Falling();
 	}
 
