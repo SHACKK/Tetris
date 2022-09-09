@@ -83,7 +83,16 @@ void CTetris::Update(const std::list<ST_KEYSTATE> stKeyState, int nElapsedTick)
                 Sleep(3000);
                 m_Map.Clear();
             }
+            bHold = FALSE;
+
             break;
+        case GAMEKEY_HOLD:
+            //TODO
+            if(!m_HoldMap.Empty())
+                m_Tetrimino = m_HoldMap.Pop();
+
+			m_HoldMap.Push(&m_Tetrimino);
+            bHold = TRUE;
         }
     }
 

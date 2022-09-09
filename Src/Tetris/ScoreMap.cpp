@@ -31,8 +31,10 @@ void CScoreMap::Clear(void)
 void CScoreMap::AddScore(int nScore, int nCombo)
 {
 	m_nScore += 100 * nScore * nCombo;
-	wchar_t pszScore[4] = {0, };
-	errno_t err = _itow_s(m_nScore, pszScore, 4, 10);
+	if (m_nScore > 9999)
+		m_nScore = 9999;
+	wchar_t pszScore[5] = {0, };
+	errno_t err = _itow_s(m_nScore, pszScore, 5, 10);
 	wmemcpy(m_szBoard[3] + 3, pszScore, 4);
 }
 
